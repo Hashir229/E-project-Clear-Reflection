@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Custom Mirrors | Clear Reflection</title>
+    <link rel="icon" type="image/png" href="IMAGES/logo.png">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- Custom Theme CSS -->
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #000;
+            color: #fff;
+        }
+
+        /* ================= HERO ================= */
+        .custom-hero {
+            background: linear-gradient(
+                rgba(0, 0, 0, 0.65),
+                rgba(0, 0, 0, 0.65)
+            ),
+            url('https://images.unsplash.com/photo-1600121848594-d8644e57abab') center/cover;
+            height: 75vh;
+            color: #fff;
+        }
+
+        .custom-hero h1 {
+            font-weight: 600;
+            letter-spacing: 1.5px;
+        }
+
+        /* ================= BUTTONS ================= */
+        .btn-gold {
+            background-color: #ffe87c;
+            color: #000;
+            border: none;
+            font-weight: 500;
+        }
+
+        .btn-gold:hover {
+            background-color: #e6d46f;
+            color: #000;
+        }
+
+        .btn-outline-gold {
+            border: 1px solid #ffe87c;
+            color: #ffe87c;
+        }
+
+        .btn-outline-gold:hover {
+            background-color: #ffe87c;
+            color: #000;
+        }
+
+        /* ================= SECTIONS ================= */
+        .section-title {
+            font-weight: 600;
+            color: #ffe87c;
+        }
+
+        .section-text {
+            color: #ccc;
+        }
+
+        /* ================= LIST ================= */
+        .custom-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .custom-list li {
+            margin-bottom: 10px;
+            color: #ddd;
+        }
+
+        .custom-list i {
+            color: #ffe87c;
+            margin-right: 8px;
+        }
+
+        /* ================= PROCESS ================= */
+        .process-box {
+            padding: 30px;
+            border: 1px solid rgba(255, 232, 124, 0.4);
+            border-radius: 16px;
+            background-color: #111;
+            height: 100%;
+        }
+
+        .process-box span {
+            font-size: 28px;
+            color: #ffe87c;
+            font-weight: 600;
+        }
+
+        .process-box h6 {
+            margin-top: 10px;
+            color: #fff;
+        }
+
+        .process-box p {
+            color: #ccc;
+            font-size: 14px;
+        }
+
+        /* ================= LIGHT SECTION FIX ================= */
+        .bg-light {
+            background-color: #0d0d0d !important;
+        }
+
+        /* ================= IMAGE ================= */
+        .custom-img {
+            border-radius: 18px;
+            border: 2px solid #ffe87c;
+        }
+
+        /* ================= MODAL ================= */
+        .modal-content {
+            background-color: #111;
+            color: #fff;
+            border-radius: 18px;
+            border: 1px solid #ffe87c;
+        }
+
+        .modal-header {
+            border-bottom: 1px solid rgba(255, 232, 124, 0.3);
+        }
+
+        .modal-title {
+            color: #ffe87c;
+        }
+
+        .btn-close {
+            filter: invert(1);
+        }
+
+        .form-control {
+            background-color: #000;
+            border: 1px solid #ffe87c;
+            color: #fff;
+        }
+
+        .form-control::placeholder {
+            color: #aaa;
+        }
+
+        .form-control:focus {
+            background-color: #000;
+            color: #fff;
+            border-color: #ffe87c;
+            box-shadow: none;
+        }
+
+        #loader {
+  position: fixed;
+  inset: 0;
+  background: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+/* Loader Box */
+.loader-box {
+  text-align: center;
+  color: #fff;
+}
+
+/* Logo */
+.loader-logo {
+  width: 170px;
+  border: 3px solid #ffdc73 ;
+  box-shadow: 0 0 15px  #facd44  , 0 0 50px rgba(255, 221, 0, 0.5);
+  border-radius: 50%;
+  margin-bottom: 2px;
+}
+
+/* Spinner */
+.spinner{
+  width: 50px;
+  height: 50px;
+  border: 5px solid rgba(255,255,255,0.2);
+  border-top: 5px solid #ffc822;
+  box-shadow: 0 0 15px  #ffcf3ec3  , 0 0 50px rgba(255, 221, 0, 0.5);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin: 17px auto;
+}
+
+@keyframes spin {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Website Name */
+.site-name {
+  font-weight: 530;
+  font-style: italic ;
+  color: #ffdc73;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 32px;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+
+  text-shadow:
+    0 0 6px rgba(255, 235, 87, 0.806),
+    0 0 14px rgba(255, 234, 46, 0.6),
+    0 0 30px rgba(255, 224, 46, 0.4);
+  position: relative;
+}
+
+/* Reflection Effect */
+.site-name::after {
+  content: attr(data-text);
+  position: absolute;
+  left: 0;
+  top: 100%;
+  width: 100%;
+  transform: scaleY(-1);
+  opacity: 0.25;
+  filter: blur(1px);
+}
+
+
+    </style>
+</head>
+
+<body>
+<!-- Loader -->
+<div id="loader">
+  <div class="loader-box">
+    <img src="IMAGES/logo.png" alt="Logo" class="loader-logo">
+
+    <div class="spinner"></div>
+
+    <h2 class="site-name" class="glow-bg"data-text="Clear Reflection">Clear Reflection</h2>
+  </div>
+</div>
+
+<!-- Website Content -->
+<div id="content" class="hidden">
+<!-- ================= HERO ================= -->
+    <section class="custom-hero d-flex align-items-center text-center">
+        <div class="container">
+            <h1>Custom Mirrors, Crafted for You</h1>
+            <p class="text-light">
+                Tailored designs that reflect your space, style, and vision
+            </p>
+            <button class="btn btn-gold mt-3" data-bs-toggle="modal" data-bs-target="#customModal">
+                Request a Custom Design
+            </button>
+        </div>
+    </section>
+
+    <!-- ================= CUSTOM DETAILS ================= -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <div class="row align-items-center g-5">
+
+                <!-- IMAGE -->
+                <div class="col-lg-6">
+                    <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c"
+                        class="img-fluid custom-img" alt="Custom Mirror">
+                </div>
+
+                <!-- CONTENT -->
+                <div class="col-lg-6">
+                    <h2 class="section-title">Designed Around Your Space</h2>
+                    <p class="section-text">
+                        Our custom mirror service allows you to design mirrors made specifically for your interior.
+                        From elegant living spaces to modern bathrooms, each piece is crafted with precision and care.
+                    </p>
+
+                    <ul class="custom-list">
+                        <li><i class="fa-solid fa-ruler-combined"></i> Custom Sizes & Shapes</li>
+                        <li><i class="fa-solid fa-layer-group"></i> Wooden, Metal & Acrylic Frames</li>
+                        <li><i class="fa-solid fa-lightbulb"></i> LED & Smart Features</li>
+                        <li><i class="fa-solid fa-palette"></i> Finish & Color Selection</li>
+                        <li><i class="fa-solid fa-shield"></i> Safety Backing & Premium Glass</li>
+                    </ul>
+
+                    <button class="btn btn-outline-gold mt-3" data-bs-toggle="modal"
+                        data-bs-target="#customModal">
+                        Start Your Custom Order
+                    </button>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= PROCESS ================= -->
+    <section class="py-5">
+        <div class="container text-center">
+            <h2 class="section-title mb-4">Our Custom Process</h2>
+
+            <div class="row g-4">
+                <div class="col-md-3">
+                    <div class="process-box">
+                        <span>01</span>
+                        <h6>Consultation</h6>
+                        <p>Share your space and requirements</p>
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <div class="process-box">
+                        <span>02</span>
+                        <h6>Design</h6>
+                        <p>We create a tailored design</p>
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <div class="process-box">
+                        <span>03</span>
+                        <h6>Crafting</h6>
+                        <p>Precision-crafted by experts</p>
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <div class="process-box">
+                        <span>04</span>
+                        <h6>Delivery</h6>
+                        <p>Carefully delivered & installed</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= MODAL ================= -->
+    <div class="modal fade" id="customModal" tabindex="-1">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+
+                <div class="modal-header">
+                    <h5 class="modal-title">Request a Custom Mirror</h5>
+                    <button class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+
+                <div class="modal-body">
+                    <form>
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" placeholder="Your Name">
+                            </div>
+                            <div class="col-md-6">
+                                <input type="email" class="form-control" placeholder="Email Address">
+                            </div>
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" placeholder="Preferred Size">
+                            </div>
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" placeholder="Frame Material">
+                            </div>
+                            <div class="col-12">
+                                <textarea class="form-control" rows="4"
+                                    placeholder="Describe your custom mirror"></textarea>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="btn btn-gold w-100 mt-4">
+                            Submit Request
+                        </button>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+    
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+    setTimeout(function () {
+    document.getElementById("loader").style.display = "none";
+    document.getElementById("content").classList.add("show");
+    }, 2000); // 2 seconds
+    </script>
+
+</body>
+</html>
