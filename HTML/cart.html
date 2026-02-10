@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Cart - Daraz Style</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body { background: #f5f5f5; font-family: Arial, sans-serif; }
+        .cart-container { margin: 50px auto; max-width: 1200px; }
+        .cart-item { background: #fff; padding: 15px; border-radius: 10px; margin-bottom: 15px; display: flex; align-items: center; }
+        .cart-item img { width: 100px; height: 100px; object-fit: cover; border-radius: 5px; }
+        .cart-item-details { flex: 1; margin-left: 15px; }
+        .cart-item-details h6 { margin-bottom: 5px; }
+        .cart-item-details .price { color: #e63946; font-weight: bold; }
+        .cart-actions { text-align: right; }
+        .remove-btn { background: none; border: none; color: #e63946; cursor: pointer; }
+        .order-summary { background: #fff; padding: 20px; border-radius: 10px; }
+        .order-summary h5 { margin-bottom: 20px; }
+        .order-summary div { display: flex; justify-content: space-between; margin-bottom: 10px; }
+        .checkout-btn { width: 100%; margin-top: 20px; }
+        .payment-methods { background: #fff; padding: 20px; border-radius: 10px; margin-top: 20px; }
+        .payment-methods h5 { margin-bottom: 15px; }
+        .payment-methods label { display: block; margin-bottom: 10px; cursor: pointer; }
+        .terms { margin-top: 20px; }
+        .terms input { margin-right: 10px; }
+    </style>
+</head>
+<body>
+
+<div class="cart-container row">
+    <!-- Left: Cart Items -->
+    <div class="col-md-8">
+        <h3>My Cart</h3>
+        <div id="cart-items"></div>
+    </div>
+
+    <!-- Right: Order Summary -->
+    <div class="col-md-4">
+        <div class="order-summary">
+            <h5>Order Summary</h5>
+            <div><span>Subtotal</span> <span id="subtotal">Rs. 0</span></div>
+            <div><span>Shipping</span> <span id="shipping">Rs. 300</span></div>
+            <hr>
+            <div><strong>Total</strong> <strong id="total">Rs. 0</strong></div>
+        </div>
+
+        <!-- Payment Methods -->
+        <div class="payment-methods">
+            <h5>Payment Methods</h5>
+            <label><input type="radio" name="payment" value="cod" checked> Cash on Delivery</label>
+            <label><input type="radio" name="payment" value="card"> Credit / Debit Card</label>
+            <label><input type="radio" name="payment" value="upi"> UPI / Wallet</label>
+
+            <div class="terms">
+                <label><input type="checkbox" id="agree-terms"> I agree to the terms and conditions</label>
+            </div>
+
+            <button class="btn btn-success checkout-btn" id="checkout-btn" disabled>Proceed to Checkout</button>
+        </div>
+    </div>
+</div>
+
+<script src="JS/cart.js"></script>
+<script>
+    // Enable checkout button only if terms are checked
+    const agreeCheckbox = document.getElementById('agree-terms');
+    const checkoutBtn = document.getElementById('checkout-btn');
+    agreeCheckbox.addEventListener('change', () => {
+        checkoutBtn.disabled = !agreeCheckbox.checked;
+    });
+
+    checkoutBtn.addEventListener('click', () => {
+        alert('Checkout successful! Payment method: ' + document.querySelector('input[name="payment"]:checked').nextSibling.textContent.trim());
+        localStorage.removeItem('cart'); // clear cart after checkout
+        location.reload(); // refresh page
+    });
+</script>
+</body>
+</html>
