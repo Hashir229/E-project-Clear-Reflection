@@ -7,11 +7,12 @@
     font-style: oblique;
 }
 #logoa{
-    border: 3px solid #ffe87c;
-    box-shadow: 0 0 15px  #facd44  , 0 0 50px rgba(255, 221, 0, 0.671);
+    border: 2px solid #ffe87c;
+    box-shadow: 0 0 15px  #facc44ad  , 0 0 50px rgba(255, 221, 0, 0.47);
     border-radius: 50%;
     margin-top: 5px;
     margin-bottom: 5px;
+    margin-right: 10px;
 }
 /* Header */
 .navbar .nav-link {
@@ -1030,4 +1031,20 @@ section {
 /* bootstrap modal always on top */
 .modal {
   z-index: 1055 !important;
+}
+
+#cart-count {
+    position: absolute;
+    top: -6px;
+    right: -10px;
+    background: red;
+    color: #fff;
+    font-size: 11px;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
 }
